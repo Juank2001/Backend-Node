@@ -12,4 +12,4 @@ Ejecute `node index.js` para iniciar el servidor node
 
 ## Documentación
 
-La documentacion de la aplicacion se puede encontrar en el siguiente enlace https://documenter.getpostman.com/view/15671399/2s93zCYfhb
+La documentacion de la aplicacion se puede encontrar en el siguiente enlace https://documenter.getpostman.com/view/15671399/2s93zCYfhb, en el ejemplo se evidencia el dominio www.example.com, este se puede configurar en el archivo c:/windows/system32/drivers/etc/host apuntando al localhost y se puede usar desde el localhost directamente
