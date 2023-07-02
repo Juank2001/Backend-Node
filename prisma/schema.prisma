@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:Juan2001@localhost:3306/prueba-tecnica"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String 
+  email String @unique
+  passwordString String?
+  address String?
+  photo String?
+  cart cart[]
+}
+
+model Product{
+  id Int @id @default(autoincrement())
+  name String
+  price Float
+  stock Int
+  code Int @unique
+  author String?
+  editorial String?
+  stores Store[]
+  ProductsCart ProductsCart[]
+}
+
+model Store{
+  id Int @id @default(autoincrement())
+  distributor String
+  stock Int
+  dateAt DateTime @default(now())
+  Product Product @relation(fields: [ProductId], references: [id])
+  ProductId Int
+}
+
+model cart {
+  id Int @id @default(autoincrement())
+  date DateTime @default(now())
+  //El estado 1 es abierto, el estado 2 es cerrado
+  state Int @default(1)
+  ProductsCart ProductsCart[]
+  User User @relation(fields: [UserId], references: [id])
+  UserId Int
+}
+
+model ProductsCart {
+  id Int @id @default(autoincrement())
+  Product Product @relation(fields: [ProductId], references: [id])
+  ProductId Int
+  Cart cart @relation(fields: [CartId], references: [id])
+  CartId Int
+  stock Int
+}
