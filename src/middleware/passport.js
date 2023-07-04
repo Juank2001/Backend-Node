@@ -24,7 +24,7 @@ passport.use(
                 }
             })
             if (user.length > 0) {
-                let compare = bcrypt.compare(password, user[0].passwordString)
+                let compare = await bcrypt.compare(password, user[0].passwordString)
                 if(compare){
                     const body = {
                         id: user[0].id,
